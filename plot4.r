@@ -11,7 +11,7 @@ df$Date<-date.vec
 df2<-subset(df,(Date >= as.Date("2007-02-01")) & (Date <=as.Date("2007-02-02")))
 
 # Join date an time to create a single column
-df2$date_time<-paste(as.character(df2$Date),df2$Time,sep="")
+df2$date_time<-paste(as.character(df2$Date),df2$Time,sep=" ")
 
 # Convert the new date_time column to R date and time format
 df2$date_time<-as.POSIXct(df2$date_time,format="%Y-%m-%d %H:%M:%S")
@@ -30,14 +30,13 @@ hist(as.numeric(df2$Global_active_power),col="red",main="Global Active Power",xl
 plot(df2$date_time,df2$Voltage,ty="l",xlab="datetime",ylab="Voltage")
 
 # Plotting Energy sub metering
-
 plot(df2$date_time,as.numeric(df2$Sub_metering_1),ylab="Global Active Power (kilowatts)",ty="l",xlab="")
 lines(df2$date_time,as.numeric(df2$Sub_metering_2),col="red")
 lines(df2$date_time,as.numeric(df2$Sub_metering_3),col="blue")
 
 # Drawing legend
 legend("topright",c("Sub_metering_1","Sub_metering_2","Sub_metering_3"),col=c("black","red","blue"),
-       lty=c(1,1,1),box.lty=0)
+       lty=c(1,1,1),box.lwd=0)
 
 # Plotting global reactive power
 plot(df2$date_time,df2$Global_reactive_power,ty="l",xlab="datetime",ylab="Global_reactive_power")

@@ -11,7 +11,7 @@ df$Date<-date.vec
 df2<-subset(df,(Date >= as.Date("2007-02-01")) & (Date <=as.Date("2007-02-02")))
 
 # Join date an time to create a single column
-df2$date_time<-paste(as.character(df2$Date),df2$Time,sep="")
+df2$date_time<-paste(as.character(df2$Date),df2$Time,sep=" ")
 
 # Convert the new date_time column to R date and time format
 df2$date_time<-as.POSIXct(df2$date_time,format="%Y-%m-%d %H:%M:%S")
